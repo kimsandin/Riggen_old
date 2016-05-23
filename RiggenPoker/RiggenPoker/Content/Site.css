@@ -70,3 +70,6 @@ select,
 textarea {
     max-width: 280px;
 }
+#text{
+    color:white;
+}

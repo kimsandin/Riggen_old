@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riggen</title>
+    <title>@ViewBag.favicon - Riggen</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,9 +17,8 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                 </li>
-                <li>
-                    <a href="#">Inlogg</a>
-                </li><br />
+                @Html.Partial("_LoginPartial")
+                <br/>
                 <li>
                     <a href="#">Bilder</a>
                 </li><br />
@@ -31,8 +30,8 @@
                 </li><br />
                 <li>
                     <a href="#">Kontakt</a>
-                </li>
-            </ul>
+                </li>               
+            </ul>          
         </div>
         </div>
         <div class="container body-content">
