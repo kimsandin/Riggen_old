@@ -1,7 +1,55 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: black;
 }
+
+#frontImage {
+    margin-top: -60px;
+}
+
+#copy {
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li a {
+    display: block;
+    width: 60px;
+    color: white;
+}
+
+#sidebar {
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -240px;
+    font-size: large;
+    margin-top: 100px;
+}
+
+#thumbnail {
+    margin-left: -200px;
+    margin-top: -40px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: orangered;
+  text-decoration: underline;
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
