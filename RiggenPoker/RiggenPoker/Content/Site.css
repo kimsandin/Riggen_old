@@ -1,11 +1,10 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 45px;
     padding-bottom: 20px;
     background-color: black;
 }
 
 #frontImage {
-    margin-top: -60px;
 }
 
 #copy {
@@ -35,9 +34,33 @@ li a {
     margin-top: 100px;
 }
 
+#searchbar {
+    margin-left: 85%;
+}
+
 #thumbnail {
-    margin-left: -200%;
-    margin-top: -40px;
+    margin-left: -190px;;
+    margin-top: -60px;
+}
+
+.input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
 }
 
 a {
