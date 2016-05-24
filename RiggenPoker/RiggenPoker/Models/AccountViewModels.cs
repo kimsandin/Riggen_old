@@ -75,7 +75,7 @@ namespace RiggenPoker.Models
         [Display(Name = "Alias")]
         public string UserName { get; set; }
 
-        [Url(ErrorMessage = "Hoppla något gick fel i filhämtningen, var god försök igen")]
+        [Url(ErrorMessage = "Hoppla! Något gick fel i filhämtningen, var god försök igen")]
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Ladda upp profilbild")]
         public string UserImage { get; set; }
