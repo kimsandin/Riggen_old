@@ -64,23 +64,35 @@ namespace RiggenPoker.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Förnamn")]
+        public string FirstName { get; set; }
 
+        [Required]
+        [Display(Name = "Efternamn")]
+        public string LastName { get; set; }
+
+        [Required]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
+
+        [Url(ErrorMessage = "Hoppla något gick fel i uppladdningen, var vänlig och försök igen")]
+        [Display(Name = "Ladda upp din profilbild")]
+        public UrlAttribute UserImage { get; set; }
+
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "E-post")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} måste vara minst {2} tecken långt", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Bekräfta lösenord")]
+        [Compare("Password", ErrorMessage = "Lösenorden matchar inte, var vänlig försök igen")]
         public string ConfirmPassword { get; set; }
     }
 
