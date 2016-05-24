@@ -25,6 +25,8 @@ namespace RiggenPoker.Models
         {
         }
 
+        public DbSet<Result> Results { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
