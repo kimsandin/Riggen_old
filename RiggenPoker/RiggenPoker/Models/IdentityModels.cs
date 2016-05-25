@@ -21,12 +21,22 @@ namespace RiggenPoker.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("RiggenPoker",throwIfV1Schema:false)
+            : base(/*"", throwIfV1Schema:false*/)
         {
         }
 
         public DbSet<Result> Results { get; set; }
 
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Result>()
+        //        .
+
+
+
+
+        //    base.OnModelCreating(modelBuilder);
+        //}
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
