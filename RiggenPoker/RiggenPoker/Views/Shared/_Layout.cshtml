@@ -18,21 +18,24 @@
                 <li class="sidebar-brand">
                 </li>
                 @Html.Partial("_LoginPartial")
-                <br/>
+                
                 <li>
                     <a href="#">Bilder</a>
-                </li><br />
+                </li>
                 <li>
                     <a href="#">Nyheter</a>
-                </li><br />
+                </li>
                 <li>
                     <a href="#">Resultat</a>
-                </li><br />
+                </li>
                 <li>
                     <a href="#">Om</a>
-                </li><br />
+                </li>
                 <li>
                     <a href="#">Kontakt</a>
+                </li>
+                <li>
+                    @Html.ActionLink("Admin", "Index", "Account")
                 </li>               
             </ul>          
         </div>

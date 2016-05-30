@@ -9,6 +9,9 @@ namespace RiggenPoker.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string UserImage { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -16,16 +19,17 @@ namespace RiggenPoker.Models
             // Add custom user claims here
             return userIdentity;
         }
+      
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base(/*"", throwIfV1Schema:false*/)
+            : base("RiggenPoker", throwIfV1Schema:false)
         {
         }
 
-        public DbSet<Result> Results { get; set; }
+      //  public DbSet<Result> Results { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
@@ -41,5 +45,7 @@ namespace RiggenPoker.Models
         {
             return new ApplicationDbContext();
         }
+
     }
+
 }
