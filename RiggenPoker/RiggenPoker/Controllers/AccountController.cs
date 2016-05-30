@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using RiggenPoker.Models;
 using System.Collections.Generic;
 using static RiggenPoker.Controllers.ManageController;
+using System.Net;
+using System.Data.Entity;
 
 namespace RiggenPoker.Controllers
 {
@@ -19,7 +21,7 @@ namespace RiggenPoker.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
         }
@@ -138,7 +140,7 @@ namespace RiggenPoker.Controllers
 
         //
         // GET: /Account/Register
-        [Authorize(Roles = "Admin")]
+    //    [Authorize(Roles = "Admin")]
         public ActionResult Register()
         {
             return View();
@@ -147,14 +149,28 @@ namespace RiggenPoker.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+     //   [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model,HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
                 //var user = new ApplicationUser { UserName = model.UserName,LastName = model.LastName,FirstName = model.FirstName,UserImage = model.UserImage, Email = model.Email };
                 var user = model.GetUser();
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    user.Files = new List<File> { avatar };
+                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -174,8 +190,24 @@ namespace RiggenPoker.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+    //    [Authorize(Roles = "Admin")]
+        public ActionResult Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+            var user = db.Users.Include(s => s.Files).SingleOrDefault(s => s.UserName == id);
+            //student = db.Students.Include(s => s.Files).SingleOrDefault(s => s.ID == id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
 
-        [Authorize(Roles = "Admin")]
+     //   [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var Db = new ApplicationDbContext();
@@ -189,31 +221,52 @@ namespace RiggenPoker.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
+     //   [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id, ManageMessageId? Message = null)
         {
             var Db = new ApplicationDbContext();
-            var user = Db.Users.First(u => u.UserName == id);
+            var user = Db.Users.Include(s=> s.Files).SingleOrDefault(u => u.Id == id);
+            
             var model = new EditUserViewModel(user);
             ViewBag.MessageId = Message;
-            return View(model);
+            return View(user);
         }
 
 
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [HttpPost, ActionName("Edit")]
+     //   [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(EditUserViewModel model)
+        public async Task<ActionResult> Edit(ApplicationUser model, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+
                 var Db = new ApplicationDbContext();
-                var user = Db.Users.First(u => u.UserName == model.UserName);
+                var user = db.Users.First(u => u.Id == model.Id);
 
                 // Update the user data:
+                user.UserName = model.UserName;
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
                 user.Email = model.Email;
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    if (user.Files.Any(f => f.FileType == FileType.Avatar))
+                    {
+                        Db.Files.Remove(user.Files.First(f => f.FileType == FileType.Avatar));
+                    }
+                    var avatar = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    user.Files = new List<File> { avatar };
+                }
                 Db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 await Db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -223,7 +276,7 @@ namespace RiggenPoker.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id = null)
         {
             var Db = new ApplicationDbContext();
@@ -239,7 +292,7 @@ namespace RiggenPoker.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+     //   [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(string id)
         {
             var Db = new ApplicationDbContext();
@@ -249,7 +302,7 @@ namespace RiggenPoker.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "Admin")]
+     //   [Authorize(Roles = "Admin")]
         public ActionResult UserRoles(string id)
         {
             var Db = new ApplicationDbContext();
@@ -260,7 +313,7 @@ namespace RiggenPoker.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+     //   [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult UserRoles(SelectUserRolesViewModel model)
         {

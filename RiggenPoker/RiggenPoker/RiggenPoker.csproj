@@ -168,17 +168,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605271038477_Init.cs" />
-    <Compile Include="Migrations\201605271038477_Init.Designer.cs">
-      <DependentUpon>201605271038477_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201605300655362_Seed med adminosv.cs" />
+    <Compile Include="Migrations\201605300655362_Seed med adminosv.Designer.cs">
+      <DependentUpon>201605300655362_Seed med adminosv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605300657433_Seed med adminosv2.cs" />
+    <Compile Include="Migrations\201605300657433_Seed med adminosv2.Designer.cs">
+      <DependentUpon>201605300657433_Seed med adminosv2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -250,9 +257,12 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\UserRoles.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\profile\" />
+    <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -263,8 +273,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605271038477_Init.resx">
-      <DependentUpon>201605271038477_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605300655362_Seed med adminosv.resx">
+      <DependentUpon>201605300655362_Seed med adminosv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605300657433_Seed med adminosv2.resx">
+      <DependentUpon>201605300657433_Seed med adminosv2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
