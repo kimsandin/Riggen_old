@@ -109,3 +109,11 @@ textarea {
     font-weight: bold;
     border-radius: 5%;
 }
+#Avatar_bildram{
+     width: 300px;
+  height: 300px;
+  border-radius: 50%; /*don't forget prefixes*/
+  background-position: center center;
+  /* as mentioned by Vad: */
+  background-size: cover;
+}

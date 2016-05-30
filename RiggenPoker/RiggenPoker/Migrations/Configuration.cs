@@ -26,7 +26,7 @@ namespace RiggenPoker.Migrations
             success = idManager.CreateRole("Admin");
             if (!success == true) return success;
 
-            success = idManager.CreateRole("CanEdit");
+            success = idManager.CreateRole("Medlem");
             if (!success == true) return success;
 
             success = idManager.CreateRole("User");
@@ -44,13 +44,13 @@ namespace RiggenPoker.Migrations
             // Be careful here - you  will need to use a password which will 
             // be valid under the password rules for the application, 
             // or the process will abort:
-            success = idManager.CreateUser(newUser, "Password1");
+            success = idManager.CreateUser(newUser, "Asd!23");
             if (!success) return success;
 
             success = idManager.AddUserToRole(newUser.Id, "Admin");
             if (!success) return success;
 
-            success = idManager.AddUserToRole(newUser.Id, "CanEdit");
+            success = idManager.AddUserToRole(newUser.Id, "Medlem");
             if (!success) return success;
 
             success = idManager.AddUserToRole(newUser.Id, "User");

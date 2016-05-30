@@ -74,6 +74,7 @@ namespace RiggenPoker.Models
 
     public class RegisterViewModel
     {
+
         [Required]
         [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
@@ -86,10 +87,10 @@ namespace RiggenPoker.Models
         [Display(Name = "Alias")]
         public string UserName { get; set; }
 
-        [Url(ErrorMessage = "Hoppla! Något gick fel i filhämtningen, var god försök igen")]
-        [DataType(DataType.ImageUrl)]
-        [Display(Name = "Ladda upp profilbild")]
-        public string UserImage { get; set; }
+        //[Url(ErrorMessage = "Hoppla! Något gick fel i filhämtningen, var god försök igen")]
+        //[DataType(DataType.ImageUrl)]
+        //[Display(Name = "Ladda upp profilbild")]
+        public virtual ICollection<File> Files { get; set; }
 
         [Required]
         [EmailAddress]
@@ -106,6 +107,7 @@ namespace RiggenPoker.Models
         [Display(Name = "Bekräfta lösenord")]
         [Compare("Password", ErrorMessage = "Lösenorden matchar inte, var vänlig försök igen")]
         public string ConfirmPassword { get; set; }
+    
         //test kanske kan tas bort sen vi får se
         public ApplicationUser GetUser()
         {
@@ -115,6 +117,9 @@ namespace RiggenPoker.Models
                 FirstName = this.FirstName,
                 LastName = this.LastName,
                 Email = this.Email,
+               
+                Files = this.Files,
+                
             };
             return user;
         }
@@ -126,12 +131,16 @@ namespace RiggenPoker.Models
         // Allow Initialization with an instance of ApplicationUser:
         public EditUserViewModel(ApplicationUser user)
         {
+            this.Id = user.Id;
             this.UserName = user.UserName;
             this.FirstName = user.FirstName;
             this.LastName = user.LastName;
             this.Email = user.Email;
+           // this.Files = user.Files;
+            
         }
-
+        [Required]
+        public string Id { get; set; }
         [Required]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
@@ -146,6 +155,7 @@ namespace RiggenPoker.Models
 
         [Required]
         public string Email { get; set; }
+      //  public virtual ICollection<File> Files { get; set; }
     }
 
     public class SelectUserRolesViewModel
