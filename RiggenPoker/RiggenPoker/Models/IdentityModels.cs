@@ -32,7 +32,9 @@ namespace RiggenPoker.Models
         //{
         //    modelBuilder.HasDefaultSchema("RiggenPoker");
         //}
-        //  public DbSet<Result> Results { get; set; }
+          public DbSet<Result> Results { get; set; }
+
+        public DbSet <UploadImage> UploadImages { get; set; }
         public DbSet<File> Files { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -172,16 +172,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605300655362_Seed med adminosv.cs" />
-    <Compile Include="Migrations\201605300655362_Seed med adminosv.Designer.cs">
-      <DependentUpon>201605300655362_Seed med adminosv.cs</DependentUpon>
+    <Compile Include="Migrations\201605300941101_Populerar databasen.cs" />
+    <Compile Include="Migrations\201605300941101_Populerar databasen.Designer.cs">
+      <DependentUpon>201605300941101_Populerar databasen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605300657433_Seed med adminosv2.cs" />
-    <Compile Include="Migrations\201605300657433_Seed med adminosv2.Designer.cs">
-      <DependentUpon>201605300657433_Seed med adminosv2.cs</DependentUpon>
+    <Compile Include="Migrations\201605301359458_test.cs" />
+    <Compile Include="Migrations\201605301359458_test.Designer.cs">
+      <DependentUpon>201605301359458_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\UploadImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -208,6 +210,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -259,10 +262,12 @@
     <Content Include="Views\Account\UserRoles.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Upload\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\profile\" />
+    <Folder Include="Content\Images\UploadedImages\" />
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
@@ -274,11 +279,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605300655362_Seed med adminosv.resx">
-      <DependentUpon>201605300655362_Seed med adminosv.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605300941101_Populerar databasen.resx">
+      <DependentUpon>201605300941101_Populerar databasen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605300657433_Seed med adminosv2.resx">
-      <DependentUpon>201605300657433_Seed med adminosv2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605301359458_test.resx">
+      <DependentUpon>201605301359458_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

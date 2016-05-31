@@ -3,7 +3,7 @@ namespace RiggenPoker.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Seedmedadminosv : DbMigration
+    public partial class Populerardatabasen : DbMigration
     {
         public override void Up()
         {
@@ -85,6 +85,21 @@ namespace RiggenPoker.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Results",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Date = c.DateTime(),
+                        History = c.Int(nullable: false),
+                        TotalScore = c.Int(nullable: false),
+                        NewScore = c.Int(nullable: false),
+                        UserName_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserName_Id)
+                .Index(t => t.UserName_Id);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -99,11 +114,13 @@ namespace RiggenPoker.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Results", "UserName_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Files", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Results", new[] { "UserName_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -111,6 +128,7 @@ namespace RiggenPoker.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Files", new[] { "User_Id" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Results");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
