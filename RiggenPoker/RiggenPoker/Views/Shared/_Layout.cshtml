@@ -9,9 +9,18 @@
 
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            <div id="wrapper">
 
-    <div id="wrapper">
+                <!-- Sidebar -->
+                <div id="sidebar">
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-brand">
+                        </li>
+                        @Html.Partial("_LoginPartial")
 
+<<<<<<< HEAD
         <!-- Sidebar -->
         <div class="sidebar-nav">
             @Html.Partial("_LoginPartial")
@@ -40,7 +49,31 @@
                 </li>               
             </ul>          
         </div>
+=======
+                        <li>
+                            <a href="/Upload/Index">Bilder</a>
+                        </li>
+                        <li>
+                            <a href="#">Nyheter</a>
+                        </li>
+                        <li>
+                            <a href="#">Resultat</a>
+                        </li>
+                        <li>
+                            <a href="#">Om</a>
+                        </li>
+                        <li>
+                            <a href="#">Kontakt</a>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Admin", "Index", "Account")
+                        </li>
+                    </ul>
+                </div>
+            </div>
+>>>>>>> master
         </div>
+    </div>
 
     <!--Sökfunktion-->
     <input type="search" id="searchbar" name="search" placeholder="Sök...">

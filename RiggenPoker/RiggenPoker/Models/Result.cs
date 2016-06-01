@@ -14,7 +14,7 @@ namespace RiggenPoker.Models
         public int History { get; set; }
         public int TotalScore { get; set; }
         public int NewScore { get; set; }
-       // public virtual ICollection<ApplicationUser> UserName { get; set; }
+        public virtual ApplicationUser UserName { get; set; }
     }
 }
 
