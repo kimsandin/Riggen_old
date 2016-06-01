@@ -29,7 +29,8 @@ li a {
     left: 250px;
     width: 0;
     height: 100%;
-    margin-left: -240px;
+    margin-left: 240px;
+    margin-right: 100px;
     font-size: large;
     margin-top: 100px;
 }
@@ -77,8 +78,8 @@ a:focus {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
