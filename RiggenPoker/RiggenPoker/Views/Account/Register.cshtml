@@ -1,9 +1,9 @@
-﻿@model RiggenPoker.Models.RegisterViewModel
+﻿@model RegisterViewModel
 @{
     ViewBag.Title = "Medlemsregistrering";
 }
 
-<h2 style="color: white">@ViewBag.Title</h2>
+<h2>@ViewBag.Title</h2>
                                                                     @*@class = "form-horizontal", role = "form"*@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -29,18 +29,6 @@
             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
         </div>
     </div>
-    @*<div class="form-group" id="text">
-        @Html.LabelFor(m => m.UserImage, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserImage, new { @class = "form-control" })
-            <div>
-
-                <button id="buttonRegisterForm" type="button" name="Välj">Välj fil</button>
-                <button id="buttonRegisterForm" type="submit" name="Spara">Spara</button>
-                <button id="buttonRegisterForm" type="reset" name="Avbryt">Avbryt</button>
-            </div>
-        </div>
-    </div>*@
     <div class="form-group" id="text">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -73,12 +61,6 @@
         </div>
     </div>
 }
-@*@using (Html.BeginForm("FileUpload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <label for="file">Upload Image:</label>
-                    <input type="file" name="file" id="file" style="width: 100%;" />
-                    <input type="submit" value="Upload" class="submit" />
-}*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

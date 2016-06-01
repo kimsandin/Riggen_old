@@ -168,6 +168,7 @@ namespace RiggenPoker.Controllers
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         avatar.Content = reader.ReadBytes(upload.ContentLength);
+                        reader.Close();
                     }
                     user.Files = new List<File> { avatar };
                 }
@@ -224,10 +225,17 @@ namespace RiggenPoker.Controllers
      //   [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id, ManageMessageId? Message = null)
         {
-            var Db = new ApplicationDbContext();
-            var user = Db.Users.Include(s=> s.Files).SingleOrDefault(u => u.Id == id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             
-            var model = new EditUserViewModel(user);
+            ApplicationUser user = db.Users.Include(s=> s.Files).SingleOrDefault(u => u.Id == id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+           // var model = new EditUserViewModel(user);
             ViewBag.MessageId = Message;
             return View(user);
         }
@@ -241,7 +249,7 @@ namespace RiggenPoker.Controllers
             if (ModelState.IsValid)
             {
 
-                var Db = new ApplicationDbContext();
+                
                 var user = db.Users.First(u => u.Id == model.Id);
 
                 // Update the user data:
@@ -249,11 +257,12 @@ namespace RiggenPoker.Controllers
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
                 user.Email = model.Email;
+            
                 if (upload != null && upload.ContentLength > 0)
                 {
                     if (user.Files.Any(f => f.FileType == FileType.Avatar))
                     {
-                        Db.Files.Remove(user.Files.First(f => f.FileType == FileType.Avatar));
+                        db.Files.Remove(user.Files.First(f => f.FileType == FileType.Avatar));
                     }
                     var avatar = new File
                     {
@@ -267,8 +276,8 @@ namespace RiggenPoker.Controllers
                     }
                     user.Files = new List<File> { avatar };
                 }
-                Db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-                await Db.SaveChangesAsync();
+                db.Entry(user).State = EntityState.Modified;
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 

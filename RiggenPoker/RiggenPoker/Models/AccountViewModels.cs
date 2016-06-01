@@ -116,17 +116,14 @@ namespace RiggenPoker.Models
                 UserName = this.UserName,
                 FirstName = this.FirstName,
                 LastName = this.LastName,
-                Email = this.Email,
-               
-                Files = this.Files,
-                
+                Email = this.Email,              
+                Files = this.Files,                
             };
             return user;
         }
     }
     public class EditUserViewModel
     {
-        public EditUserViewModel() { }
 
         // Allow Initialization with an instance of ApplicationUser:
         public EditUserViewModel(ApplicationUser user)
@@ -136,7 +133,7 @@ namespace RiggenPoker.Models
             this.FirstName = user.FirstName;
             this.LastName = user.LastName;
             this.Email = user.Email;
-           // this.Files = user.Files;
+           //this.Files = user.Files;
             
         }
         [Required]
@@ -155,7 +152,7 @@ namespace RiggenPoker.Models
 
         [Required]
         public string Email { get; set; }
-      //  public virtual ICollection<File> Files { get; set; }
+       // public virtual ICollection<File> Files { get; set; }
     }
 
     public class SelectUserRolesViewModel

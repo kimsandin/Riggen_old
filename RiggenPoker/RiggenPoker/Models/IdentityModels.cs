@@ -32,9 +32,13 @@ namespace RiggenPoker.Models
         //{
         //    modelBuilder.HasDefaultSchema("RiggenPoker");
         //}
+<<<<<<< HEAD
+        public DbSet<Result> Results { get; set; }
+=======
           public DbSet<Result> Results { get; set; }
 
         public DbSet <UploadImage> UploadImages { get; set; }
+>>>>>>> master
         public DbSet<File> Files { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -51,8 +55,8 @@ namespace RiggenPoker.Models
         {
             return new ApplicationDbContext();
         }
-  
 
+        public System.Data.Entity.DbSet<RiggenPoker.Models.EditUserViewModel> EditUserViewModels { get; set; }
     }
 
 }

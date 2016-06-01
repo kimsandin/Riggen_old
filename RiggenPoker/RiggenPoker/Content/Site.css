@@ -2,9 +2,11 @@
     padding-top: 45px;
     padding-bottom: 20px;
     background-color: black;
+   
 }
 
 #frontImage {
+    
 }
 
 #copy {
@@ -78,8 +80,14 @@ a:focus {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+<<<<<<< HEAD
+    padding-left: 15px;
+    padding-right: 15px;
+   
+=======
     padding-left: 30px;
     padding-right: 30px;
+>>>>>>> master
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
