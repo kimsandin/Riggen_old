@@ -2,9 +2,11 @@
     padding-top: 45px;
     padding-bottom: 20px;
     background-color: black;
+   
 }
 
 #frontImage {
+    
 }
 
 #copy {
@@ -79,6 +81,7 @@ a:focus {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+   
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 

@@ -7,13 +7,13 @@ namespace RiggenPoker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Seedmedadminosv2 : IMigrationMetadata
+    public sealed partial class fixat2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Seedmedadminosv2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixat2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605300657433_Seed med adminosv2"; }
+            get { return "201606011234121_fixat2"; }
         }
         
         string IMigrationMetadata.Source

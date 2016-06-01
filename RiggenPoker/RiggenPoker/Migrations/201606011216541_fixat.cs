@@ -3,7 +3,7 @@ namespace RiggenPoker.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Seedmedadminosv2 : DbMigration
+    public partial class fixat : DbMigration
     {
         public override void Up()
         {

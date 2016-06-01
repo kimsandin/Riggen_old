@@ -168,19 +168,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EditUserViewModelsController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605300655362_Seed med adminosv.cs" />
-    <Compile Include="Migrations\201605300655362_Seed med adminosv.Designer.cs">
-      <DependentUpon>201605300655362_Seed med adminosv.cs</DependentUpon>
+    <Compile Include="Migrations\201606011215221_Reset.cs" />
+    <Compile Include="Migrations\201606011215221_Reset.Designer.cs">
+      <DependentUpon>201606011215221_Reset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605300657433_Seed med adminosv2.cs" />
-    <Compile Include="Migrations\201605300657433_Seed med adminosv2.Designer.cs">
-      <DependentUpon>201605300657433_Seed med adminosv2.cs</DependentUpon>
+    <Compile Include="Migrations\201606011216541_fixat.cs" />
+    <Compile Include="Migrations\201606011216541_fixat.Designer.cs">
+      <DependentUpon>201606011216541_fixat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606011234121_fixat2.cs" />
+    <Compile Include="Migrations\201606011234121_fixat2.Designer.cs">
+      <DependentUpon>201606011234121_fixat2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -258,6 +263,11 @@
     <Content Include="Views\Account\UserRoles.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\EditUserViewModels\Create.cshtml" />
+    <Content Include="Views\EditUserViewModels\Delete.cshtml" />
+    <Content Include="Views\EditUserViewModels\Details.cshtml" />
+    <Content Include="Views\EditUserViewModels\Edit.cshtml" />
+    <Content Include="Views\EditUserViewModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,11 +283,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605300655362_Seed med adminosv.resx">
-      <DependentUpon>201605300655362_Seed med adminosv.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606011215221_Reset.resx">
+      <DependentUpon>201606011215221_Reset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605300657433_Seed med adminosv2.resx">
-      <DependentUpon>201605300657433_Seed med adminosv2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606011216541_fixat.resx">
+      <DependentUpon>201606011216541_fixat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606011234121_fixat2.resx">
+      <DependentUpon>201606011234121_fixat2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

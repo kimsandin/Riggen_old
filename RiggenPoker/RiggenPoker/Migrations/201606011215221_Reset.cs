@@ -3,10 +3,22 @@ namespace RiggenPoker.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Seedmedadminosv : DbMigration
+    public partial class Reset : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.EditUserViewModels",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        UserName = c.String(nullable: false),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Files",
                 c => new
@@ -116,6 +128,7 @@ namespace RiggenPoker.Migrations
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Files");
+            DropTable("dbo.EditUserViewModels");
         }
     }
 }

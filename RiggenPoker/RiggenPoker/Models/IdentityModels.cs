@@ -32,15 +32,15 @@ namespace RiggenPoker.Models
         //{
         //    modelBuilder.HasDefaultSchema("RiggenPoker");
         //}
-        //  public DbSet<Result> Results { get; set; }
+        public DbSet<Result> Results { get; set; }
         public DbSet<File> Files { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-  
 
+        public System.Data.Entity.DbSet<RiggenPoker.Models.EditUserViewModel> EditUserViewModels { get; set; }
     }
 
 }
